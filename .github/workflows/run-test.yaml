@@ -8,6 +8,7 @@ on:
       - "rel_*"
       # branches used to test the workflow
       - "workflow_test_*"
+      - "test_*"
     paths-ignore:
       - "examples/**"
 
