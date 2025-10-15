@@ -89,7 +89,6 @@ from ..sql.base import _NoArg
 from ..sql.base import CompileState
 from ..sql.schema import Table
 from ..sql.selectable import ForUpdateArg
-from ..sql.selectable import LABEL_STYLE_TABLENAME_PLUS_COL
 from ..util import deprecated_params
 from ..util import IdentitySet
 from ..util.typing import TupleAny
@@ -3911,9 +3910,7 @@ class Session(_SessionClassMethods, EventTarget):
 
         if populate_existing:
             load_options += {"_populate_existing": populate_existing}
-        statement = sql.select(mapper).set_label_style(
-            LABEL_STYLE_TABLENAME_PLUS_COL
-        )
+        statement = sql.select(mapper)
         if with_for_update is not None:
             statement._for_update_arg = ForUpdateArg._from_argument(
                 with_for_update
